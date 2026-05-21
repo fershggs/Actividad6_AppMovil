@@ -28,14 +28,13 @@ class MainActivity : AppCompatActivity() {
         binding.rvwNews.adapter = NoticiaAdapter(getNews())
     }
     fun getNews(): List<Noticia>{
-        val noticias = listOf(Noticia("Titulo" , "Descripción 1"),
-            Noticia("Titulo 2", "Descripción 2"),
-            Noticia("Titulo 3", "Descripción 3"),
-            Noticia("Titulo 4", "Descripción 4"),
-            Noticia("Titulo 5", "Descripción 5"),
-            Noticia("Titulo 6", "Descripción 6")
 
-        )
+        val noticias = mutableListOf<Noticia>()
+
+        for(i in 1..5){
+            noticias.add(Noticia("Titlu $i", "Descripcion $i"))
+        }
+
         return noticias
     }
 }
