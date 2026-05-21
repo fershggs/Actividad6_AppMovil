@@ -4,7 +4,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.actividad6.databinding.ItemListaBinding
 
-class NoticiaAdapter (val noticias: List<Noticia>):
+class NoticiaAdapter (val noticias: List<Noticia>,
+                        val onNoticiaClicked: (Noticia) -> Unit):
         RecyclerView.Adapter<NoticiaHolder>() {
         override fun onCreateViewHolder(
                 parent: ViewGroup,
@@ -22,11 +23,12 @@ class NoticiaAdapter (val noticias: List<Noticia>):
                 val noticia = noticias[position]
                 holder.binding.tvwTitle.text = noticia.title
                 holder.binding.tvwDescription.text = noticia.description
+                holder.binding.root.setOnClickListener {
+                        onNoticiaClicked(noticia)
+                }
 
-                TODO("Not yet implemented")
+
         }
 
-        override fun getItemCount(): Int {
-                TODO("Not yet implemented")
-        }
+        override fun getItemCount() = noticias.size
 }
